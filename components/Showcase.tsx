@@ -1,4 +1,4 @@
-export default function Showcase(data: any) {
+export default function Showcase(data: any, id: string) {
   return (
     <div class="h-screen flex justify-center items-start mt-6 lg:mt-0 lg:items-center">
     <div
@@ -18,10 +18,10 @@ export default function Showcase(data: any) {
       </div>
       <div class="items-center">
         <a
-          href="#"
+          href={`/story/${id}/viewbook`}
           class="text-white cursor-pointer items-center group bg-black px-8 py-2 rounded-md font-bold hover:bg-gray-800 transition duration-300 ease-in-out flex justify-center gap-2"
         >
-          Read Story{" "}
+          View Book{" "}
         </a>
       </div>
     </div>
