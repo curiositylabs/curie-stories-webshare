@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* For screens smaller than 640px (mobile) */
+@media (max-width: 639px) {
+    .bg-cover {
+        background-size: cover;
+    }
+}
+
+/* For screens between 640px and 1023px (tablets) */
+@media (min-width: 640px) and (max-width: 1023px) {
+    .bg-cover {
+        background-size: contain;
+    }
+}
+
+/* For screens 1024px and larger (desktops) */
+@media (min-width: 1024px) {
+    .bg-cover {
+        background-size: cover;
+    }
+}
