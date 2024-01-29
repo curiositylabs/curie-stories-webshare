@@ -10,9 +10,9 @@ export default function Showcase(data: any, id: string) {
         alt="bordered image" 
         class="object-cover border-4 border-white w-full h-auto sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-64 lg:w-64 xl:h-72 xl:w-72" 
       />
-      <div class="space-y-4 text-center text-black">
-        <h1 class="text-2xl sm:text-3xl inline-block font-bold">{data.title}</h1>
-        <p class="text-sm sm:text-base md:text-lg lg:text-xl max-w text-black">
+      <div class="space-y-4 text-center">
+        <h1 class="text-2xl text-[#110056] sm:text-3xl inline-block font-bold">{data.title}</h1>
+        <p class="text-lg text-[#1100567c] sm:text-base md:text-lg lg:text-xl max-w">
           - A Story by {data.authors[0]}
         </p>
       </div>
