@@ -64,7 +64,7 @@ API works based on the story ID, tested the API links with several ids.
 Question: If the Share link is provided by the story sharer, then how do I get the parameters of the story
 Answer: 
 
-Ideally I would get the parameters from the URL query and load the webpage from that parameter passed onto the web page request. (Check in with Uhith)
+Ideally I would get the parameters from the URL query and load the webpage from that parameter passed onto the web page request.
 
 My server should be ready to accept this queried parameter request. 
 
