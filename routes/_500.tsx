@@ -15,9 +15,9 @@ export default function Error404() {
             height="128"
             alt="Curiosity Labs"
           />
-          <h1 class="text-4xl font-bold">404 - Page not found</h1>
+          <h1 class="text-4xl font-bold">500 - Page not found</h1>
           <p class="my-4">
-            This is an internal specific functionality based API.
+            Check the storyID you have entered. It might be wrong.
           </p>
           <a href="https://curiositylabs.ai/" class="underline">
             Curiosity Labs
