@@ -5,8 +5,9 @@ export default function App({ Component }: PageProps) {
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>webshare</title>
+        <title>Story</title>
         <link rel="stylesheet" href="/styles.css" />
+        <link rel="icon" href="/favicon.ico" />
       </head>
       <body>
         <Component />
