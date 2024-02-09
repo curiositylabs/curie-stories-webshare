@@ -15,7 +15,7 @@ export default async function StoryData(_req: any, ctx: FreshContext) {
         <meta property="og:title" content={data.title} />
         <meta
           property="og:image"
-          content="https://i.ibb.co/gtZmjgN/adn6aylhljvrrytt79hc.png"
+          content="https://i.ibb.co/9ZRL24y/small-size.png"
         />
       </head>
       <body>
