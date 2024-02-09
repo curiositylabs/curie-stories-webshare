@@ -14,7 +14,10 @@ export default async function StoryData(_req: any, ctx: FreshContext) {
         <meta property="og:type" content="website" />
         <meta property="og:title" content={data.title} />
         <meta property="og:image" content={data.cover} />
-        <meta property="og:description" content={data.description} />
+        <meta
+          property="og:url"
+          content={"https://stories.curiositylabs.ai/story/" + id}
+        />
       </head>
       <body>
         {Showcase(data, id)}
