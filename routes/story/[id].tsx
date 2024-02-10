@@ -13,10 +13,7 @@ export default async function StoryData(_req: any, ctx: FreshContext) {
       <head>
         <meta property="og:type" content="website" />
         <meta property="og:title" content={data.title} />
-        <meta
-          property="og:image"
-          content="https://i.ibb.co/9ZRL24y/small-size.png"
-        />
+        <meta property="og:image" content={data.cover} />
       </head>
       <body>
         {Showcase(data, id)}
