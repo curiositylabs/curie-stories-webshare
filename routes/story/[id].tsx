@@ -9,7 +9,7 @@ export default async function StoryData(_req: any, ctx: FreshContext) {
   );
   let data = await response.json();
   let share_image_url = data.cover;
-  let newUrl = url.replace(/(\/upload\/)/, "$1c_fill,h_200,w_200/");
+  let newUrl = share_image_url.replace(/(\/upload\/)/, "$1c_fill,h_200,w_200/");
   console.log(newUrl);
   return (
     <html>
