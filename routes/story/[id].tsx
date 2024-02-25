@@ -8,15 +8,15 @@ export default async function StoryData(_req: any, ctx: FreshContext) {
       id,
   );
   let data = await response.json();
+  let share_image_url = data.cover;
+  let newUrl = url.replace(/(\/upload\/)/, "$1c_fill,h_200,w_200/");
+  console.log(newUrl);
   return (
     <html>
       <head>
         <meta property="og:type" content="website" />
         <meta property="og:title" content={data.title} />
-        <meta
-          property="og:image"
-          content="https://res.cloudinary.com/dik9xar6e/image/upload/c_fill,h_200,w_200/v1708236786/junnnzuuivr6m1sv9pet.png"
-        />
+        <meta property="og:image" content={newUrl} />
       </head>
       <body>
         {Showcase(data, id)}
