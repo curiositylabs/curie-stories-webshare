@@ -1,16 +1,15 @@
 import { FreshContext } from "$fresh/server.ts";
-import Showcase from "../../components/Showcase.tsx";
+import StoryCard from "../../components/StoryCard.tsx";
 
 export default async function StoryData(_req: any, ctx: FreshContext) {
-  let id = ctx.params.id;
-  let response = await fetch(
+  const id = ctx.params.id;
+  const response = await fetch(
     "https://curie-backend-pwxppjv6ha-uw.a.run.app/stories/any-profile-id/" +
       id,
   );
-  let data = await response.json();
-  let share_image_url = data.cover;
-  let newUrl = share_image_url.replace(/(\/upload\/)/, "$1c_fill,h_200,w_200/");
-  console.log(newUrl);
+  const data = await response.json();
+  const share_image_url = data.cover;
+  const newUrl = share_image_url.replace(/(\/upload\/)/, "$1c_fill,h_200,w_200/");
   return (
     <html>
       <head>
@@ -19,9 +18,8 @@ export default async function StoryData(_req: any, ctx: FreshContext) {
         <meta property="og:image" content={newUrl} />
       </head>
       <body>
-        {Showcase(data, id)}
+        <StoryCard data={data} id={id} />
       </body>
     </html>
   );
-  // push to deno deploy
 }

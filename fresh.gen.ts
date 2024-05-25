@@ -7,8 +7,8 @@ import * as $_500 from "./routes/_500.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $story_id_ from "./routes/story/[id].tsx";
 import * as $story_id_viewbook from "./routes/story/[id]/viewbook.tsx";
-import * as $Counter from "./islands/Counter.tsx";
-import * as $Picturebook from "./islands/Picturebook.tsx";
+import * as $Carousel from "./islands/Carousel.tsx";
+import * as $InstallBanner from "./islands/InstallBanner.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -20,8 +20,8 @@ const manifest = {
     "./routes/story/[id]/viewbook.tsx": $story_id_viewbook,
   },
   islands: {
-    "./islands/Counter.tsx": $Counter,
-    "./islands/Picturebook.tsx": $Picturebook,
+    "./islands/Carousel.tsx": $Carousel,
+    "./islands/InstallBanner.tsx": $InstallBanner,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
