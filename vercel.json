@@ -3,15 +3,7 @@
     "builds": [
       {
         "src": "main.ts",
-        "use": "@vercel/node"
-      },
-      {
-        "src": "dev.ts",
-        "use": "@vercel/node"
-      },
-      {
-        "src": "fresh.config.ts",
-        "use": "@vercel/node"
+        "use": "vercel-deno@0.3.0"
       }
     ],
     "routes": [
