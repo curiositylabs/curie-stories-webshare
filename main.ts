@@ -4,10 +4,17 @@
 /// <reference lib="dom.asynciterable" />
 /// <reference lib="deno.ns" />
 
-import "$std/dotenv/load.ts";
-
 import { start } from "$fresh/server.ts";
 import manifest from "./fresh.gen.ts";
 import config from "./fresh.config.ts";
 
-await start(manifest, config);
+async function main() {
+  // Load environment variables in production
+  if (Deno.env.get("DENO_ENV") !== "development") {
+    await import("$std/dotenv/load.ts");
+  }
+
+  await start(manifest, config);
+}
+
+main();
