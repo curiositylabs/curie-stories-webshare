@@ -9,7 +9,7 @@ export default async function StoryData(_req: any, ctx: FreshContext) {
   );
   const data = await response.json();
   if (data.book_format == "Text Only Books") {
-    return Viewbook(data);
+    return <Viewbook data={data} />
   } else {
 
     const carouselData = data.pages.map((page: any) => {

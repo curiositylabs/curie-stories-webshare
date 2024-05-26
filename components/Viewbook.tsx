@@ -18,7 +18,7 @@ type BookData = {
     visibility: string;
   };
 
-export default function Viewbook(data: BookData) {
+export default function Viewbook({ data }: { data: BookData }) {
     return (
       <div className="sm:grid sm:grid-cols-3 gap-4 p-4 m-4 items-start justify-center">
         <img className="w-full rounded-lg shadow-2xl h-auto object-scale-down mb-6 md:mb-0 md:w-full lg:w-full md:col-span-1" src={data.cover} alt={data.title} />
