@@ -1,9 +1,7 @@
 import { type PageProps } from "$fresh/server.ts";
-import { useSignal } from "@preact/signals";
 import InstallBanner from "../islands/InstallBanner.tsx";
 
 export default function App({ Component }: PageProps) {
-  const isBannerVisible = useSignal(localStorage.getItem("bannerDismissed") === "true");
   return (
     <html>
       <head>
@@ -14,12 +12,8 @@ export default function App({ Component }: PageProps) {
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className='bg-gray-100'>
-        <InstallBanner isVisible={isBannerVisible} />
-        <div
-          className={`${isBannerVisible.value ? "" : ""}`} //add padding to remove the padding when banner closed
-        >
-          <Component />
-        </div>
+        <InstallBanner />
+        <Component />
       </body>
     </html>
   );

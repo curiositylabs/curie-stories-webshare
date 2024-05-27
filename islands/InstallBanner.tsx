@@ -1,14 +1,16 @@
-import { useEffect } from "preact/hooks";
-import { Signal } from "@preact/signals-core";
+import { useEffect, useState } from "preact/hooks";
 
-const InstallBanner = ({ isVisible }: { isVisible: Signal<boolean> }) => {
+const InstallBanner = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
-    const bannerDismissed = localStorage.getItem("bannerDismissed") === "true";
+    const bannerDismissed = localStorage.getItem('bannerDismissed') === 'true';
+
     if (!bannerDismissed) {
       checkIfAppInstalled()
         .then((installed) => {
           if (!installed) {
-            isVisible.value = true;
+            setIsVisible(true);
           }
         });
     }
@@ -44,11 +46,11 @@ const InstallBanner = ({ isVisible }: { isVisible: Signal<boolean> }) => {
   };
 
   const handleClose = () => {
-    isVisible.value = false;
+    setIsVisible(false);
     localStorage.setItem("bannerDismissed", "true");
   };
 
-  if (!isVisible.value) {
+  if (!isVisible) {
     return null;
   }
 
