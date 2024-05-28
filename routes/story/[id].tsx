@@ -16,6 +16,8 @@ export default async function StoryData(_req: any, ctx: FreshContext) {
         <meta property="og:type" content="website" />
         <meta property="og:title" content={data.title} />
         <meta property="og:image" content={newUrl} />
+
+        <title>{data.title}</title>
       </head>
       <body>
         <StoryCard data={data} id={id} />

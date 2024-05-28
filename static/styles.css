@@ -2,8 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    height: 100vh;
+    height: -webkit-fill-available;
+}
+
 body {
     margin: 0;
+    height: -webkit-fill-available;
+}
+
+.height-webkit-fill {
+    height: 100vh;
+    /* mobile viewport*/
+    height: -webkit-fill-available;
 }
 
 @keyframes page-flip {

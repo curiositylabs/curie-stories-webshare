@@ -75,24 +75,24 @@ const Carousel = ({ data, title }: CarouselProps) => {
   const currentSlide = data[currentIndex];
 
   return (
-    <div className="relative w-full h-screen mx-auto overflow-hidden flex flex-col justify-between text-[#110056] container-flip">
+    <div ref={touchRef} className="w-full height-webkit-fill mx-auto overflow-hidden flex flex-col justify-between text-[#110056] container-flip">
       <div className="text-center p-4 pt-16 md:pt-16 text-gray-500">
         <h1 className="text-sm md:text-lg font-bold">{title}</h1>
       </div>
       <div
-        className={`flex-grow flex items-center justify-center p-4 md:px-24 flip ${flipClass} transition-opacity ${
+        className={`flex-grow flex items-center justify-center flip ${flipClass} transition-opacity ${
           animating ? "opacity-0" : "opacity-100"
         }`}
       >
-        <div className="w-full h-full flex items-center justify-center transition-transform duration-500 ease-in-out transform">
+        <div className="w-full absolute p-4 md:px-24 h-full flex flex-grow items-center justify-center transition-transform duration-500 ease-in-out transform">
           {currentSlide.image && currentSlide.text ? (
-            <div className="flex flex-col md:flex-row items-center justify-center w-full h-full absolute">
+            <div className="flex flex-col md:px-10 md:flex-row items-center justify-center w-full h-full">
               <div className="flex-1 px-4 order-2 md:order-1 text-center md:text-left overflow-auto max-h-full">
-                <div className="max-h-full h-full flex items-center overflow-auto text-left text-md md:text-lg pt-7 md:pt-0">
+                <div className="overflow-auto text-left text-md md:text-lg">
                   {currentSlide.text}
                 </div>
               </div>
-              <div className="flex-1 px-4 pb-4 md:pb-0 order-1 md:order-2 flex items-center justify-center max-h-full h-full">
+              <div className="flex-1 px-4 pb-4 md:pb-0 order-1 md:order-2 flex items-center justify-center w-full max-h-full h-full">
                 <img
                   src={currentSlide.image}
                   alt={currentSlide.text}
@@ -106,7 +106,7 @@ const Carousel = ({ data, title }: CarouselProps) => {
                 <img
                   src={currentSlide.image}
                   alt={currentSlide.text}
-                  className="rounded-xl md:w-6/12 object-contain"
+                  className="rounded-xl h-full object-contain"
                 />
               ) : (
                 <div className="text-left text-md md:text-lg overflow-auto max-h-full">
