@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 import IconCircleChevronsRight from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/chevron-right.tsx";
 import IconCircleChevronsLeft from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/chevron-left.tsx";
 
@@ -11,7 +11,9 @@ const Carousel = ({ data, title }: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
   const [flipClass, setFlipClass] = useState('');
-
+  const startXRef = useRef(0);
+  const touchRef = useRef<HTMLDivElement>(null);
+  
   const nextSlide = () => {
     setFlipClass('page-flip');
     setAnimating(true);
@@ -40,12 +42,42 @@ const Carousel = ({ data, title }: CarouselProps) => {
     }, 400);
   };
 
+  const handleTouchStart = (e: TouchEvent) => {
+    startXRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    if (!animating) {
+      const endX = e.touches[0].clientX;
+      const deltaX = startXRef.current - endX;
+
+      if (deltaX > 50) {
+        nextSlide();
+      } else if (deltaX < -50) {
+        prevSlide();
+      }
+    }
+  };
+
+  useEffect(() => {
+    const touchElement = touchRef.current;
+    if (touchElement) {
+      touchElement.addEventListener("touchstart", handleTouchStart);
+      touchElement.addEventListener("touchmove", handleTouchMove);
+
+      return () => {
+        touchElement.removeEventListener("touchstart", handleTouchStart);
+        touchElement.removeEventListener("touchmove", handleTouchMove);
+      };
+    }
+  }, [animating]);
+
   const currentSlide = data[currentIndex];
 
   return (
     <div className="relative w-full h-screen mx-auto overflow-hidden flex flex-col justify-between text-[#110056] container-flip">
       <div className="text-center p-4 pt-16 md:pt-16 text-gray-500">
-        <h1 className="text-xs md:text-lg font-bold">{title}</h1>
+        <h1 className="text-sm md:text-lg font-bold">{title}</h1>
       </div>
       <div
         className={`flex-grow flex items-center justify-center p-4 md:px-24 flip ${flipClass} transition-opacity ${
@@ -56,7 +88,7 @@ const Carousel = ({ data, title }: CarouselProps) => {
           {currentSlide.image && currentSlide.text ? (
             <div className="flex flex-col md:flex-row items-center justify-center w-full h-full absolute">
               <div className="flex-1 px-4 order-2 md:order-1 text-center md:text-left overflow-auto max-h-full">
-                <div className="max-h-full h-full flex items-center overflow-auto text-left text-sm md:text-lg pt-7 md:pt-0">
+                <div className="max-h-full h-full flex items-center overflow-auto text-left text-md md:text-lg pt-7 md:pt-0">
                   {currentSlide.text}
                 </div>
               </div>
@@ -77,7 +109,7 @@ const Carousel = ({ data, title }: CarouselProps) => {
                   className="rounded-xl md:w-6/12 object-contain"
                 />
               ) : (
-                <div className="text-left text-sm md:text-lg overflow-auto max-h-full">
+                <div className="text-left text-md md:text-lg overflow-auto max-h-full">
                   {currentSlide.text}
                 </div>
               )}
