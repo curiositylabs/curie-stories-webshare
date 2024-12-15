@@ -76,8 +76,8 @@ const Carousel = ({ data, title }: CarouselProps) => {
 
   return (
     <div ref={touchRef} className="w-full height-webkit-fill mx-auto overflow-hidden flex flex-col justify-between text-[#110056] container-flip">
-      <div className="text-center p-4 pt-16 md:pt-16 text-gray-500">
-        <h1 className="text-sm md:text-lg font-bold">{title}</h1>
+      <div className="text-center p-4 pt-24 md:pt-20 text-[#110056]">
+        <h1 className="text-2xl md:text-3xl text-center font-bold">{title}</h1>
       </div>
       <div
         className={`flex-grow flex items-center justify-center flip ${flipClass} transition-opacity ${
@@ -87,17 +87,17 @@ const Carousel = ({ data, title }: CarouselProps) => {
         <div className="w-full absolute p-4 md:px-24 h-full flex flex-grow items-center justify-center transition-transform duration-500 ease-in-out transform">
           {currentSlide.image && currentSlide.text ? (
             <div className="flex flex-col md:px-10 md:flex-row items-center justify-center w-full h-full">
-              <div className="flex-1 px-4 order-2 md:order-1 text-center md:text-left overflow-auto max-h-full">
-                <div className="overflow-auto text-left text-md md:text-lg">
-                  {currentSlide.text}
-                </div>
-              </div>
-              <div className="flex-1 px-4 pb-4 md:pb-0 order-1 md:order-2 flex items-center justify-center w-full max-h-full h-full">
+              <div className="flex-1 px-4 pb-4 md:pb-0 order-1 md:order-1 flex items-center justify-center w-full max-h-full h-full">
                 <img
                   src={currentSlide.image}
                   alt={currentSlide.text}
                   className="rounded-xl w-auto max-h-full object-contain"
                 />
+              </div>
+              <div className="flex-1 px-4 order-2 md:order-2 text-center md:text-left overflow-auto max-h-full">
+                <div className="overflow-auto text-left text-md md:text-lg">
+                  {currentSlide.text}
+                </div>
               </div>
             </div>
           ) : (
@@ -117,7 +117,7 @@ const Carousel = ({ data, title }: CarouselProps) => {
           )}
         </div>
       </div>
-      <div className="bottom-0 left-0 right-0 p-4 flex items-center justify-center w-full">
+      <div className="bottom-0 left-0 right-0 p-2 flex items-center justify-center w-full">
         <button
           className={`text-xl pr-2 ${currentIndex === 0 ? 'text-gray-400 cursor-not-allowed' : 'text-[#110056] cursor-pointer'}`}
           onClick={prevSlide}

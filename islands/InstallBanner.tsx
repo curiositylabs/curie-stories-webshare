@@ -4,7 +4,7 @@ const InstallBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const bannerDismissed = localStorage.getItem('bannerDismissed') === 'true';
+    const bannerDismissed = false //localStorage.getItem('bannerDismissed') === 'true';
 
     if (!bannerDismissed) {
       checkIfAppInstalled()
@@ -33,13 +33,14 @@ const InstallBanner = () => {
       document.addEventListener("visibilitychange", handleVisibilityChange);
 
       // Attempt to open the app using the custom URL scheme
-      const start = Date.now();
-      const timeout = setTimeout(() => {
-        const now = Date.now();
-        if (now - start < 2000) {
-          resolve(false);
-        }
-      }, 1500);
+      // const start = Date.now();
+      // const timeout = setTimeout(() => {
+      //   const now = Date.now();
+      //   if (now - start < 2000) {
+      //     resolve(false);
+      //   }
+      // }, 1500);
+      setIsVisible(true)
 
       window.location.href = "curie://";
     });
@@ -55,13 +56,14 @@ const InstallBanner = () => {
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full bg-gray-100 text-black p-4 z-50 flex items-center justify-between shadow-md">
+    <div className="fixed top-0 left-0 w-full bg-gray-100 text-black p-2 z-50 flex items-center justify-between shadow-md">
       <div className="flex items-center">
-        <button onClick={handleClose} className="text-gray-500 text-lg mr-4">
+        {/* <button onClick={handleClose} className="text-gray-500 text-lg mr-4">
           &times;
-        </button>
-        <img src="/curie-logo.svg" alt="App Icon" className="w-12 h-12 mr-4" />
-        <div>
+        </button> */}
+        {/* <img src="/curie-logo.svg" alt="App Icon" className="w-12 h-12 mr-4" /> */}
+        <img src="https://storage.googleapis.com/curiosity-labs-email-assets/logos/cure-text-logo.png" alt="App Icon" className="h-10" />
+        {/* <div>
           <div className="font-bold">Ask Curie</div>
           <div className="text-xs text-gray-500">Curiosity Labs</div>
           <div className="text-xs text-gray-500 md:hidden">
@@ -71,11 +73,11 @@ const InstallBanner = () => {
             Get the app and unleash your kids’ imagination and creativity to
             create stories and more with their AI sidekick
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="flex items-center">
         <a
-          href="https://apps.apple.com/us/app/curie"
+          href="https://apps.apple.com/app/id6470493763"
           target="_blank"
           className="text-blue-500 font-bold ml-4"
         >
