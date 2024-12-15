@@ -19,7 +19,7 @@ const Carousel = ({ data, title }: CarouselProps) => {
     setAnimating(true);
     setTimeout(() => {
       setCurrentIndex((prevIndex) =>
-        prevIndex === data.length - 1 ? 0 : prevIndex + 1
+        prevIndex === data.length ? 0 : prevIndex + 1
       );
       setFlipClass('');
     }, 300);
@@ -33,7 +33,7 @@ const Carousel = ({ data, title }: CarouselProps) => {
     setAnimating(true);
     setTimeout(() => {
       setCurrentIndex((prevIndex) =>
-        prevIndex === 0 ? data.length - 1 : prevIndex - 1
+        prevIndex === 0 ? data.length : prevIndex - 1
       );
       setFlipClass('');
     }, 300);
@@ -85,7 +85,8 @@ const Carousel = ({ data, title }: CarouselProps) => {
         }`}
       >
         <div className="w-full absolute p-4 md:px-24 h-full flex flex-grow items-center justify-center transition-transform duration-500 ease-in-out transform">
-          {currentSlide.image && currentSlide.text ? (
+        {currentIndex < data.length ? (
+          currentSlide.image && currentSlide.text ? (
             <div className="flex flex-col md:px-10 md:flex-row items-center justify-center w-full h-full">
               <div className="flex-1 px-4 pb-4 md:pb-0 order-1 md:order-1 flex items-center justify-center w-full max-h-full h-full">
                 <img
@@ -114,6 +115,36 @@ const Carousel = ({ data, title }: CarouselProps) => {
                 </div>
               )}
             </div>
+          )
+         ) : (
+            <div className="flex flex-col items-center justify-center text-center gap-6 w-full h-full">
+              <h1 className="text-5xl font-bold text-[#110056]">THE END</h1>
+              <div className="flex gap-4">
+                <button
+                onClick={() => {
+                  navigator.clipboard.writeText(globalThis.location.href.replace('/viewbook', ''))
+                    .then(() => alert("Link copied to clipboard!"))
+                    .catch(() => alert("Failed to copy the link."));
+                }}
+                className="px-6 py-3 bg-[#110056] text-white rounded-md shadow-md hover:bg-[#130175] transition"
+              >
+                Copy Link
+                </button>
+                <a
+                  href="https://www.curiositylabs.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 bg-[#110056] text-white rounded-md shadow-md hover:bg-[#130175] transition"
+                >
+                  Download Curie
+                </a>
+              </div>
+              
+              {/* Copyright Label */}
+              <div className="mt-8 text-sm text-gray-500">
+                © {new Date().getFullYear()} Curiosity Labs
+              </div>
+            </div>
           )}
         </div>
       </div>
@@ -131,10 +162,10 @@ const Carousel = ({ data, title }: CarouselProps) => {
           />
         </button>
         <span className="text-sm text-[#110056]">
-          {currentIndex + 1} of {data.length}
+          {currentIndex + 1} of {data.length + 1}
         </span>
         <button
-          className={`text-xl pl-2 ${currentIndex === data.length - 1 ? 'text-gray-400 cursor-not-allowed' : 'text-[#110056] cursor-pointer'}`}
+          className={`text-xl pl-2 ${currentIndex === data.length ? 'text-gray-400 cursor-not-allowed' : 'text-[#110056] cursor-pointer'}`}
           onClick={nextSlide}
           aria-label="Next slide"
         >
@@ -142,7 +173,7 @@ const Carousel = ({ data, title }: CarouselProps) => {
             color={currentIndex === data.length - 1 ? "#cccccc" : "#110056"}
             class="w-8 h-8"
             aria-hidden="true"
-            disabled={animating || currentIndex === data.length - 1}
+            disabled={animating || currentIndex === data.length}
           />
         </button>
       </div>

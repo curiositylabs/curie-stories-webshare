@@ -1,3 +1,4 @@
+// deno-lint-ignore no-explicit-any
 export default function StoryCard({ data, id }: { data: any; id: string }) {
   return (
     <div class="w-full flex flex-grow flex-col justify-center pt-32 items-center lg:mt-0 lg:items-center">
