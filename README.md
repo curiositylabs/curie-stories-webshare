@@ -6,6 +6,14 @@ Need to create a landing webpage for sharing an existing story in the database f
 
 This existing story will be accessed from the database using an API call. The data given would be in JSON format, so processing that data and displaying it on the screen according to the respective UI from Figma Designs.
 
+
+### Local Development
+```
+deno task build
+deno run --allow-net --allow-read --allow-env main.ts
+```
+
+
 ### Requirements:
 
 - Mobile Friendly/ Responsive UI Design according to Figma Requirements
@@ -101,3 +109,5 @@ Check all the tasks for the work done through out developing this feature and ho
 - The notification to install the app
 - Maybe a Header to represent the company (Curiosity Labs)
 
+### Deployment Instructions
+A commit automatically triggers a deployment throught GitHub workflow/actions

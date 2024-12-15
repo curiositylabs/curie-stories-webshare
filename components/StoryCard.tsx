@@ -1,6 +1,6 @@
 export default function StoryCard({ data, id }: { data: any; id: string }) {
   return (
-    <div class="w-full height-webkit-fill flex flex-col justify-center pt-24 items-center lg:mt-0 lg:items-center">
+    <div class="w-full flex flex-grow flex-col justify-center pt-32 items-center lg:mt-0 lg:items-center">
       <div
         class="w-11/12 backdrop-brightness-50 p-8 sm:w-1/2 px-10 py-9 justify-center flex flex-col items-center gap-8 bg-cover bg-center bg-no-repeat rounded-xl text-white"
         style={{
