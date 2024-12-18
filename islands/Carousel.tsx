@@ -75,7 +75,7 @@ const Carousel = ({ data, title }: CarouselProps) => {
   const currentSlide = data[currentIndex];
 
   return (
-    <div ref={touchRef} className="w-full height-webkit-fill mx-auto overflow-hidden flex flex-col justify-between text-[#110056] container-flip">
+    <div ref={touchRef} className="w-full height-webkit-fill mx-auto overflow-y-auto flex flex-col justify-between text-[#110056] container-flip">
       <div className="text-center p-4 pt-24 md:pt-20 text-[#110056]">
         <h1 className="text-2xl md:text-3xl text-center font-bold">{title}</h1>
       </div>
@@ -84,7 +84,7 @@ const Carousel = ({ data, title }: CarouselProps) => {
           animating ? "opacity-0" : "opacity-100"
         }`}
       >
-        <div className="w-full absolute p-4 md:px-24 h-full flex flex-grow items-center justify-center transition-transform duration-500 ease-in-out transform">
+        <div className="w-full relative p-4 md:px-24 h-full flex flex-grow items-center justify-center transition-transform duration-500 ease-in-out transform">
         {currentIndex < data.length ? (
           currentSlide.image && currentSlide.text ? (
             <div className="flex flex-col md:px-10 md:flex-row items-center justify-center w-full h-full">
@@ -96,7 +96,7 @@ const Carousel = ({ data, title }: CarouselProps) => {
                 />
               </div>
               <div className="flex-1 px-4 order-2 md:order-2 text-center md:text-left overflow-auto max-h-full">
-                <div className="overflow-auto text-left text-md md:text-lg">
+                <div className="text-left text-md md:text-lg">
                   {currentSlide.text}
                 </div>
               </div>
@@ -110,25 +110,25 @@ const Carousel = ({ data, title }: CarouselProps) => {
                   className="rounded-xl h-full object-contain"
                 />
               ) : (
-                <div className="text-left text-md md:text-lg overflow-auto max-h-full">
+                <div className="text-left text-md md:text-lg">
                   {currentSlide.text}
                 </div>
               )}
             </div>
           )
-         ) : (
+          ) : (
             <div className="flex flex-col items-center justify-center text-center gap-6 w-full h-full">
               <h1 className="text-5xl font-bold text-[#110056]">THE END</h1>
               <div className="flex gap-4">
                 <button
-                onClick={() => {
-                  navigator.clipboard.writeText(globalThis.location.href.replace('/viewbook', ''))
-                    .then(() => alert("Link copied to clipboard!"))
-                    .catch(() => alert("Failed to copy the link."));
-                }}
-                className="px-6 py-3 bg-[#110056] text-white rounded-md shadow-md hover:bg-[#130175] transition"
-              >
-                Copy Link
+                  onClick={() => {
+                    navigator.clipboard.writeText(globalThis.location.href.replace('/viewbook', ''))
+                      .then(() => alert("Link copied to clipboard!"))
+                      .catch(() => alert("Failed to copy the link."));
+                  }}
+                  className="px-6 py-3 bg-[#110056] text-white rounded-md shadow-md hover:bg-[#130175] transition"
+                >
+                  Copy Link
                 </button>
                 <a
                   href="https://www.curiositylabs.ai"
@@ -148,7 +148,7 @@ const Carousel = ({ data, title }: CarouselProps) => {
           )}
         </div>
       </div>
-      <div className="bottom-0 left-0 right-0 p-2 flex items-center justify-center w-full">
+      <div className="relative p-2 flex items-center justify-center w-full">
         <button
           className={`text-xl pr-2 ${currentIndex === 0 ? 'text-gray-400 cursor-not-allowed' : 'text-[#110056] cursor-pointer'}`}
           onClick={prevSlide}
@@ -170,7 +170,7 @@ const Carousel = ({ data, title }: CarouselProps) => {
           aria-label="Next slide"
         >
           <IconCircleChevronsRight
-            color={currentIndex === data.length - 1 ? "#cccccc" : "#110056"}
+            color={currentIndex === data.length ? "#cccccc" : "#110056"}
             class="w-8 h-8"
             aria-hidden="true"
             disabled={animating || currentIndex === data.length}
