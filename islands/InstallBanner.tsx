@@ -1,55 +1,55 @@
-import { useEffect, useState } from "preact/hooks";
+import { useState } from "preact/hooks";
 
 const InstallBanner = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible] = useState(true);
 
-  useEffect(() => {
-    const bannerDismissed = false //localStorage.getItem('bannerDismissed') === 'true';
+  // useEffect(() => {
+  //   const bannerDismissed = false //localStorage.getItem('bannerDismissed') === 'true';
 
-    if (!bannerDismissed) {
-      checkIfAppInstalled()
-        .then((installed) => {
-          if (!installed) {
-            setIsVisible(true);
-          }
-        });
-    }
-  }, []);
+  //   if (!bannerDismissed) {
+  //     checkIfAppInstalled()
+  //       .then((installed) => {
+  //         if (!installed) {
+  //           setIsVisible(true);
+  //         }
+  //       });
+  //   }
+  // }, []);
 
-  const checkIfAppInstalled = () => {
-    return new Promise((resolve) => {
-      const handleVisibilityChange = () => {
-        if (document.hidden) {
-          resolve(true); // App is installed
-        } else {
-          resolve(false); // App is not installed
-        }
-        document.removeEventListener(
-          "visibilitychange",
-          handleVisibilityChange
-        );
-      };
+  // const checkIfAppInstalled = () => {
+  //   return new Promise((resolve) => {
+  //     const handleVisibilityChange = () => {
+  //       if (document.hidden) {
+  //         resolve(true); // App is installed
+  //       } else {
+  //         resolve(false); // App is not installed
+  //       }
+  //       document.removeEventListener(
+  //         "visibilitychange",
+  //         handleVisibilityChange
+  //       );
+  //     };
 
-      document.addEventListener("visibilitychange", handleVisibilityChange);
+  //     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-      // Attempt to open the app using the custom URL scheme
-      // const start = Date.now();
-      // const timeout = setTimeout(() => {
-      //   const now = Date.now();
-      //   if (now - start < 2000) {
-      //     resolve(false);
-      //   }
-      // }, 1500);
-      setIsVisible(true)
+  //     // Attempt to open the app using the custom URL scheme
+  //     // const start = Date.now();
+  //     // const timeout = setTimeout(() => {
+  //     //   const now = Date.now();
+  //     //   if (now - start < 2000) {
+  //     //     resolve(false);
+  //     //   }
+  //     // }, 1500);
+  //     setIsVisible(true)
 
-      window.location.href = "curie://";
-    });
-  };
+  //     window.location.href = "curie://";
+  //   });
+  // };
 
-  const handleClose = () => {
-    setIsVisible(false);
-    localStorage.setItem("bannerDismissed", "true");
-  };
+  // const handleClose = () => {
+  //   setIsVisible(false);
+  //   localStorage.setItem("bannerDismissed", "true");
+  // };
 
   if (!isVisible) {
     return null;
