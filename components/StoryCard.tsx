@@ -1,7 +1,7 @@
 // deno-lint-ignore no-explicit-any
 export default function StoryCard({ data, id }: { data: any; id: string }) {
   return (
-    <div class="w-full flex flex-grow flex-col justify-center pt-32 items-center lg:mt-0 lg:items-center">
+    <div class="w-full flex flex-grow flex-col justify-center pt-32 pb-8 items-center lg:mt-0 lg:items-center">
       <div
         class="w-11/12 backdrop-brightness-50 p-8 sm:w-1/2 px-10 py-9 justify-center flex flex-col items-center gap-8 bg-cover bg-center bg-no-repeat rounded-xl text-white"
         style={{
@@ -19,7 +19,7 @@ export default function StoryCard({ data, id }: { data: any; id: string }) {
             {data.title}
           </h1>
           <p class="text-lg text-[#1100567c] sm:text-base md:text-lg lg:text-xl max-w">
-          A Story by {data.authors[0]}
+            A story by {data.authors[0]}
           </p>
         </div>
         <div class="items-center">

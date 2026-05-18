@@ -43,7 +43,7 @@ export default function Viewbook({ data }: { data: BookData }) {
                 }}
                 className="px-6 py-3 bg-[#110056] text-white rounded-md shadow-md hover:bg-[#130175] transition"
               >
-                Copy Link
+                Share
                 </button>
                 <a
                   href="https://www.curiositylabs.ai"
@@ -51,7 +51,7 @@ export default function Viewbook({ data }: { data: BookData }) {
                   rel="noopener noreferrer"
                   className="px-6 py-3 bg-[#110056] text-white rounded-md shadow-md hover:bg-[#130175] transition"
                 >
-                  Download Curie
+                  Download App
                 </a>
               </div>
 

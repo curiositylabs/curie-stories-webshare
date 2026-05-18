@@ -1,4 +1,5 @@
 import { useState } from "preact/hooks";
+import IconDeviceMobile from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/device-mobile.tsx";
 
 const InstallBanner = () => {
   const [isVisible] = useState(true);
@@ -58,12 +59,19 @@ const InstallBanner = () => {
   return (
     <div className="fixed top-0 left-0 w-full bg-gray-100 text-black p-2 z-50 flex items-center justify-between shadow-md">
       <div className="flex items-center">
-        {/* <button onClick={handleClose} className="text-gray-500 text-lg mr-4">
+        {
+          /* <button onClick={handleClose} className="text-gray-500 text-lg mr-4">
           &times;
-        </button> */}
+        </button> */
+        }
         {/* <img src="/curie-logo.svg" alt="App Icon" className="w-12 h-12 mr-4" /> */}
-        <img src="https://storage.googleapis.com/curiosity-labs-email-assets/logos/cure-text-logo.png" alt="App Icon" className="h-10" />
-        {/* <div>
+        <img
+          src="https://storage.googleapis.com/curiosity-labs-email-assets/logos/curie-text-logo.png"
+          alt="App Icon"
+          className="h-8"
+        />
+        {
+          /* <div>
           <div className="font-bold">Ask Curie</div>
           <div className="text-xs text-gray-500">Curiosity Labs</div>
           <div className="text-xs text-gray-500 md:hidden">
@@ -73,15 +81,18 @@ const InstallBanner = () => {
             Get the app and unleash your kids’ imagination and creativity to
             create stories and more with their AI sidekick
           </div>
-        </div> */}
+        </div> */
+        }
       </div>
       <div className="flex items-center">
         <a
           href="https://apps.apple.com/app/id6470493763"
           target="_blank"
-          className="text-blue-500 font-bold ml-4"
+          aria-label="Download App"
+          className="text-blue-500 font-bold ml-4 flex items-center gap-1"
         >
-          Install
+          <IconDeviceMobile className="w-6 h-6" />
+          Download App
         </a>
       </div>
     </div>
