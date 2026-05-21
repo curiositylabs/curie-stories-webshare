@@ -125,7 +125,7 @@ const Carousel = ({ data, id }: CarouselProps) => {
                             {currentIndex + 1}
                           </div>
                         </div>
-                        <div className="shrink md:min-w-0 px-4 pt-2 md:px-10 md:pt-0 order-2 md:order-2 text-center md:text-left overflow-y-auto max-h-full min-h-0">
+                        <div className="shrink md:min-w-0 px-4 pt-2 pb-24 md:px-10 md:pt-0 md:pb-20 order-2 md:order-2 text-center md:text-left overflow-y-auto max-h-full min-h-0">
                           {renderPageText(currentSlide.text)}
                         </div>
                       </div>
@@ -141,7 +141,7 @@ const Carousel = ({ data, id }: CarouselProps) => {
                             />
                           )
                           : (
-                            <div className="px-4 pt-4">
+                            <div className="h-full overflow-y-auto px-4 pt-4 pb-24 md:pb-20">
                               {renderPageText(currentSlide.text)}
                             </div>
                           )}
