@@ -3,93 +3,98 @@
 @tailwind utilities;
 
 html {
-    height: 100vh;
-    height: -webkit-fill-available;
+  min-height: 100%;
+  height: 100%;
+  overscroll-behavior-y: none;
 }
 
 body {
-    margin: 0;
-    height: -webkit-fill-available;
+  margin: 0;
+  min-height: 100%;
+  height: 100%;
+  overscroll-behavior-y: none;
 }
 
 .height-webkit-fill {
-    height: 100vh;
-    /* mobile viewport*/
-    height: -webkit-fill-available;
+  height: 100vh;
+  height: -webkit-fill-available;
+  height: 100svh;
+  height: 100dvh;
+  overscroll-behavior: none;
 }
 
 @keyframes page-flip {
-    0% {
-        transform: rotateY(0deg);
-        opacity: 1;
-    }
+  0% {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
 
-    50% {
-        transform: rotateY(-90deg);
-        opacity: 0.5;
-    }
+  50% {
+    transform: rotateY(-90deg);
+    opacity: 0.5;
+  }
 
-    100% {
-        transform: rotateY(-180deg);
-        opacity: 1;
-    }
+  100% {
+    transform: rotateY(-180deg);
+    opacity: 1;
+  }
 }
 
 @keyframes page-flip-back {
-    0% {
-        transform: rotateY(0deg);
-        opacity: 1;
-    }
+  0% {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
 
-    50% {
-        transform: rotateY(90deg);
-        opacity: 0.5;
-    }
+  50% {
+    transform: rotateY(90deg);
+    opacity: 0.5;
+  }
 
-    100% {
-        transform: rotateY(180deg);
-        opacity: 1;
-    }
+  100% {
+    transform: rotateY(180deg);
+    opacity: 1;
+  }
 }
 
 .page-flip {
-    animation: page-flip 0.6s forwards;
+  animation: page-flip 0.6s forwards;
 }
 
 .page-flip-back {
-    animation: page-flip-back 0.6s forwards;
+  animation: page-flip-back 0.6s forwards;
 }
 
 .container-flip {
-    perspective: 1000px;
+  perspective: 1000px;
 }
 
 .flip {
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
 
 .transition-opacity {
-    transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 
 /* For screens smaller than 640px (mobile) */
 @media (max-width: 639px) {
-    .bg-cover {
-        background-size: cover;
-    }
+  .bg-cover {
+    background-size: cover;
+  }
 }
 
 /* For screens between 640px and 1023px (tablets) */
 @media (min-width: 640px) and (max-width: 1023px) {
-    .bg-cover {
-        background-size: contain;
-    }
+  .bg-cover {
+    background-size: contain;
+  }
 }
 
 /* For screens 1024px and larger (desktops) */
 @media (min-width: 1024px) {
-    .bg-cover {
-        background-size: cover;
-    }
+  .bg-cover {
+    background-size: cover;
+  }
 }

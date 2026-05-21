@@ -27,7 +27,7 @@ export default function StoryCard({ data, id }: { data: any; id: string }) {
         <div class="flex flex-col items-center justify-center gap-3">
           <a
             href={`/story/${id}/viewbook`}
-            class="text-white cursor-pointer items-center group bg-black w-48 px-8 py-2 rounded-md font-bold hover:bg-gray-800 transition duration-300 ease-in-out flex justify-center gap-2 text-sm leading-5 whitespace-nowrap"
+            class="text-white cursor-pointer items-center group bg-black w-48 px-8 py-3 rounded-md font-bold hover:bg-gray-800 transition duration-300 ease-in-out flex justify-center gap-2 text-sm leading-5 whitespace-nowrap"
           >
             Read
           </a>
@@ -35,7 +35,7 @@ export default function StoryCard({ data, id }: { data: any; id: string }) {
             href={`https://curie-backend-388092980975.us-west1.run.app/stories/print/orders/start?story_id=${id}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="text-[#110056] cursor-pointer items-center group bg-white border border-[#d8cffd] w-48 px-6 py-2 rounded-md font-bold hover:bg-[#f8f6ff] transition duration-300 ease-in-out flex justify-center gap-2 text-sm leading-5 whitespace-nowrap"
+            class="text-[#110056] cursor-pointer items-center group bg-white border border-[#d8cffd] w-48 px-6 py-3 rounded-md font-bold hover:bg-[#f8f6ff] transition duration-300 ease-in-out flex justify-center gap-2 text-sm leading-5 whitespace-nowrap"
           >
             <IconBook class="w-4 h-4" aria-hidden="true" />
             Make it a Book

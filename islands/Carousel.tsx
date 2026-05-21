@@ -100,7 +100,7 @@ const Carousel = ({ data, id }: CarouselProps) => {
   return (
     <div
       ref={touchRef}
-      className="w-full height-webkit-fill mx-auto overflow-hidden relative text-[#110056] container-flip"
+      className="w-full height-webkit-fill mx-auto box-border overflow-hidden relative pt-12 md:pt-0 text-[#110056] container-flip"
     >
       <div
         className={`h-full min-h-0 overflow-hidden flex items-center justify-center flip ${flipClass} transition-opacity ${
