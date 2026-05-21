@@ -2,17 +2,22 @@ import { FreshContext } from "$fresh/server.ts";
 import Viewbook from "../../../components/Viewbook.tsx";
 import Carousel from "../../../islands/Carousel.tsx";
 
-export default async function StoryData(_req: any, ctx: FreshContext) {
+type StoryPage = {
+  content: string;
+  image_url: string | null;
+};
+
+export default async function StoryData(_req: Request, ctx: FreshContext) {
   const response = await fetch(
     "https://curie-backend-pwxppjv6ha-uw.a.run.app/stories/any-profile-id/" +
-      ctx.params.id
+      ctx.params.id,
   );
   const data = await response.json();
   let renderElement;
   if (data.book_format == "Text Only Books") {
-    renderElement = <Viewbook data={data} />;
+    renderElement = <Viewbook data={data} id={ctx.params.id} />;
   } else {
-    const carouselData = data.pages.map((page: any) => {
+    const carouselData = data.pages.map((page: StoryPage) => {
       return {
         text: page.content,
         image: page.image_url,
@@ -21,13 +26,16 @@ export default async function StoryData(_req: any, ctx: FreshContext) {
 
     renderElement = (
       <div className="height-webkit-fill flex items-center justify-center">
-        <Carousel data={carouselData} title={data.title} />
+        <Carousel data={carouselData} id={ctx.params.id} />
       </div>
     );
   }
 
   const share_image_url = data.cover;
-  const newUrl = share_image_url.replace(/(\/upload\/)/, "$1c_fill,h_200,w_200/");
+  const newUrl = share_image_url.replace(
+    /(\/upload\/)/,
+    "$1c_fill,h_200,w_200/",
+  );
 
   return (
     <>

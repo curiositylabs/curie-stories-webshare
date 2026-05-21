@@ -86,7 +86,7 @@ const InstallBanner = () => {
       </div>
       <div className="flex items-center">
         <a
-          href="https://apps.apple.com/app/id6470493763"
+          href="https://www.curiositylabs.ai"
           target="_blank"
           aria-label="Download App"
           className="text-blue-500 font-bold ml-4 flex items-center gap-1"

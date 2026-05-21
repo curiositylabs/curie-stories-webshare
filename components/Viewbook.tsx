@@ -1,65 +1,84 @@
+import IconBook from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/book.tsx";
+import IconShare from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/share.tsx";
+
 type BookData = {
-    authors: string[];
-    book_format: string;
-    cover: string;
-    created_at: string;
-    for_ages: number[];
-    genre: string;
-    hash: null | string;
-    is_read: boolean;
-    is_saved: boolean;
-    pages: { content: string; image_url: null | string; title: null | string }[];
-    profile_id: string;
-    read_count: number;
-    saved_count: number;
-    status: string;
-    thread_id: string;
-    title: string;
-    visibility: string;
-  };
+  authors: string[];
+  book_format: string;
+  cover: string;
+  created_at: string;
+  for_ages: number[];
+  genre: string;
+  hash: null | string;
+  is_read: boolean;
+  is_saved: boolean;
+  pages: { content: string; image_url: null | string; title: null | string }[];
+  profile_id: string;
+  read_count: number;
+  saved_count: number;
+  status: string;
+  thread_id: string;
+  title: string;
+  visibility: string;
+};
 
-export default function Viewbook({ data }: { data: BookData }) {
-    return (
-      <div className="sm:grid sm:grid-cols-3 gap-4 p-4 pt-24 m-4 items-start justify-center">
-        <img className="w-full h-full rounded-lg shadow-2xl object-cover mb-6 md:mb-0 md:w-full lg:w-full md:col-span-1" src={data.cover} alt={data.title} />
-        <div class="p-2 sm:col-span-2">
-          <h1 className="text-2xl md:text-3xl text-[#110056] text-center font-bold mb-2 md:text-left">{data.title}</h1>
-          <h2 className="text-lg text-[#1100567c] text-center mb-4 md:text-left">A Story by {data.authors.join(", ")}</h2>
-          {data.pages.map((page, index) => (
-            <div key={index} className="mb-4">
-              {page.title && <h3 className="font-semibold mb-2">{page.title}</h3>}
-              <p className="text-md">{page.content}</p>
-            </div>
-          ))}
-        </div>
-        <div className="flex flex-col items-center justify-center text-center gap-6 w-full h-full">
-              {/* <h2 className="text-2xl font-bold text-[#110056]">THE END</h2> */}
-              <div className="flex gap-4">
-                <button
-                onClick={() => {
-                  navigator.clipboard.writeText(globalThis.location.href.replace('/viewbook', ''))
-                    .then(() => alert("Link copied to clipboard!"))
-                    .catch(() => alert("Failed to copy the link."));
-                }}
-                className="px-6 py-3 bg-[#110056] text-white rounded-md shadow-md hover:bg-[#130175] transition"
-              >
-                Share
-                </button>
-                <a
-                  href="https://www.curiositylabs.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 bg-[#110056] text-white rounded-md shadow-md hover:bg-[#130175] transition"
-                >
-                  Download App
-                </a>
-              </div>
-
-              {/* Copyright Label */}
-              <div className="mt-8 text-sm text-gray-500">
-                © {new Date().getFullYear()} Curiosity Labs
-              </div>
-            </div>
+export default function Viewbook({ data, id }: { data: BookData; id: string }) {
+  return (
+    <div className="sm:grid sm:grid-cols-3 gap-4 p-4 pt-24 m-4 items-start justify-center">
+      <img
+        className="w-full h-full rounded-lg shadow-2xl object-cover mb-6 md:mb-0 md:w-full lg:w-full md:col-span-1"
+        src={data.cover}
+        alt={data.title}
+      />
+      <div class="p-2 sm:col-span-2">
+        <h1 className="text-2xl md:text-3xl text-[#110056] text-center font-bold mb-2 md:text-left">
+          {data.title}
+        </h1>
+        <h2 className="text-lg text-[#1100567c] text-center mb-4 md:text-left">
+          A Story by {data.authors.join(", ")}
+        </h2>
+        {data.pages.map((page, index) => (
+          <div key={index} className="mb-4">
+            {page.title && <h3 className="font-semibold mb-2">{page.title}</h3>}
+            <p className="text-md">{page.content}</p>
+          </div>
+        ))}
       </div>
-    );
+      <div className="flex flex-col items-center justify-center text-center gap-6 w-full h-full">
+        {/* <h2 className="text-2xl font-bold text-[#110056]">THE END</h2> */}
+        <div className="max-w-[456px] bg-[#efeaff] border border-[#d8cffd] rounded-[14px] px-6 py-4 text-sm leading-[21px] text-[#110056]">
+          P.S. Love this story? Turn it into a real book. Makes a perfect
+          bedtime storybook, keepsake, or gift for kids.
+        </div>
+        <div className="flex flex-col items-center gap-4 w-[21rem] max-w-full">
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(
+                globalThis.location.href.replace("/viewbook", ""),
+              )
+                .then(() => alert("Link copied to clipboard!"))
+                .catch(() => alert("Failed to copy the link."));
+            }}
+            className="w-full px-6 py-3 bg-[#110056] text-white rounded-md shadow-md hover:bg-[#130175] transition font-bold flex items-center justify-center gap-2"
+          >
+            <IconShare class="w-5 h-5" aria-hidden="true" />
+            Share
+          </button>
+          <a
+            href={`https://curie-backend-388092980975.us-west1.run.app/stories/print/orders/start?story_id=${id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full px-6 py-3 bg-white border border-[#d8cffd] text-[#110056] rounded-md shadow-md hover:bg-[#f8f6ff] transition font-bold flex items-center justify-center gap-2"
+          >
+            <IconBook class="w-5 h-5" aria-hidden="true" />
+            Make it a Book
+          </a>
+        </div>
+
+        {/* Copyright Label */}
+        <div className="mt-8 text-sm text-gray-500">
+          © {new Date().getFullYear()} Curiosity Labs
+        </div>
+      </div>
+    </div>
+  );
 }
