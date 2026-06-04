@@ -66,7 +66,7 @@ const InstallBanner = () => {
         }
         {/* <img src="/curie-logo.svg" alt="App Icon" className="w-12 h-12 mr-4" /> */}
         <img
-          src="https://storage.googleapis.com/curiosity-labs-email-assets/logos/curie-text-logo.png"
+          src="https://storage.googleapis.com/curiosity-labs-email-assets/logos/spark-text-logo.png"
           alt="App Icon"
           className="h-8"
         />

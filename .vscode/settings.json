@@ -16,5 +16,8 @@
   },
   "css.customData": [
     ".vscode/tailwind.json"
-  ]
+  ],
+  "json.schemaDownload.trustedDomains": {
+    "https://raw.githubusercontent.com/": true
+  }
 }
