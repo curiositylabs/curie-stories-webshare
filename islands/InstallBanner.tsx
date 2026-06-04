@@ -65,11 +65,18 @@ const InstallBanner = () => {
         </button> */
         }
         {/* <img src="/curie-logo.svg" alt="App Icon" className="w-12 h-12 mr-4" /> */}
-        <img
-          src="https://storage.googleapis.com/curiosity-labs-email-assets/logos/spark-text-logo.png"
-          alt="App Icon"
-          className="h-8"
-        />
+        <a
+          href="https://www.curiositylabs.ai"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open Curiosity Labs"
+        >
+          <img
+            src="https://storage.googleapis.com/curiosity-labs-email-assets/logos/spark-text-logo.png"
+            alt="Curiosity Labs"
+            className="h-8"
+          />
+        </a>
         {
           /* <div>
           <div className="font-bold">Ask Curie</div>
@@ -88,6 +95,7 @@ const InstallBanner = () => {
         <a
           href="https://www.curiositylabs.ai"
           target="_blank"
+          rel="noopener noreferrer"
           aria-label="Download App"
           className="text-blue-500 font-bold ml-4 flex items-center gap-1"
         >
